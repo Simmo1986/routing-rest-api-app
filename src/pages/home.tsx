@@ -1,6 +1,10 @@
-const home = () => {
+import Intro from "../components/intro";
 
-    return <h2>Title</h2>
-}
+const Home = () => {
 
-export default home;
+  return (
+    <Intro />
+  );
+};
+
+export default Home;
