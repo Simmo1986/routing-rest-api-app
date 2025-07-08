@@ -10,7 +10,7 @@ function Comments() {
     }
 
     function handleCountMinus() {
-        setCount(count - 1);
+        setCount(prev => prev - 1);
     }
 
     function handleCountReset() {
