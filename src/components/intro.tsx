@@ -3,23 +3,23 @@ import { Button, Card } from 'react-bootstrap';
 import banner from '../assets/banner.jpg';
 
 function Comments() {
-    const [count, setCount] = useState(10000000000);
+    const [count, setCount] = useState(0);
 
-    function handleCount() {
-        setCount(count + 1); // ✅ this correctly updates the state
+    function handleCountPlus() {
+        setCount(prev => prev + 1);
     }
 
     function handleCountMinus() {
-        setCount(count - 1); // ✅ this correctly updates the state
+        setCount(count - 1);
     }
 
     function handleCountReset() {
-        setCount(0); // ✅ this correctly updates the state
+        setCount(0);
     }
 
     return (
         <div>
-            <Card className="bg-dark text-white">
+            <Card className="bg-dark text-white rounded-0">
                 <Card.Img
                     src={banner}
                     alt="Sample image"
@@ -27,11 +27,13 @@ function Comments() {
                 <Card.ImgOverlay className="d-flex flex-column justify-content-center align-items-center text-center">
                     <Card.Title className="fw-bold text-uppercase mb-3" as="h1">React App</Card.Title>
                     <Card.Text as="h2" className="mb-4">
-                    my name is Judd and i have {count} pounds.
+                    {count}
                     </Card.Text>
-                    <Button variant="primary" className="mb-2" onClick={handleCount}>Click Me to add one</Button>
-                    <Button variant="secondary" className="mb-2" onClick={handleCountMinus}>get rid of me -1</Button>
-                     <Button variant="secondary" onClick={handleCountReset}>reset me so im 0 years old</Button>
+                    <div className="d-flex gap-2">
+                        <Button variant="primary" onClick={handleCountPlus}>Add one</Button>
+                        <Button variant="primary" onClick={handleCountMinus}>Minus one</Button>
+                        <Button variant="light" onClick={handleCountReset}>Reset me</Button>
+                    </div>
                 </Card.ImgOverlay> 
             </Card>
         </div>
